@@ -326,10 +326,10 @@ footer .footer-heart { color: #e8b88a; }
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
       <button onclick="copiarPix()" style="background:#fff;border:2px dashed #d48aa8;border-radius:12px;padding:14px 28px;font-size:1em;font-weight:700;color:#d48aa8;cursor:pointer;transition:0.2s;font-family:inherit;" onmouseover="this.style.background='#d48aa8';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#d48aa8'">
         📋 Copiar PIX<br>
-        <span style="font-size:0.85em;font-weight:500;">464.681.898-10</span>
+        <span style="font-size:0.85em;font-weight:500;">matheusdurante97@gmail.com</span>
       </button>
       <div style="font-size:0.75em;color:#8a7a9a;">
-        Durante • CPF: 464.681.898-10
+        Durante • E-mail: matheusdurante97@gmail.com
       </div>
     </div>
   </div>
@@ -435,20 +435,18 @@ function renderItem(item) {
 render();
 
 function copiarPix() {
-  const pix = '46468189810';
-  const pixFormatado = '464.681.898-10';
+  const pix = 'matheusdurante97@gmail.com';
   navigator.clipboard.writeText(pix).then(() => {
     const toast = document.getElementById('toast');
-    toast.textContent = '✅ CPF copiado! Cole no seu banco pra pagar.';
+    toast.textContent = '✅ E-mail copiado! Cole no seu banco pra pagar.';
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2500);
-    // Tenta abrir o app do banco (funciona em alguns celulares)
     try {
-      window.location.href = 'pix://pix/?chave=46468189810';
+      window.location.href = 'pix://pix/?chave=matheusdurante97@gmail.com';
     } catch(e) {}
   }).catch(() => {
     const toast = document.getElementById('toast');
-    toast.textContent = '📋 CPF do Durante: 464.681.898-10';
+    toast.textContent = '📋 E-mail: matheusdurante97@gmail.com';
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3000);
   });
