@@ -322,10 +322,14 @@ footer .footer-heart { color: #e8b88a; }
   <!-- PIX -->
   <div class="pix-area">
     <h3>💵 Contribuição em dinheiro</h3>
-    <p>Se preferir, pode contribuir via PIX — cada real ajuda a construir nosso lar! 🏠</p>
-    <div class="pix-key" onclick="copiarPix()">📋 Copiar chave PIX</div>
-    <div style="font-size:0.75em;color:#8b7a6a;margin-top:8px;">
-      <span id="pix-email">everferreira@email.com</span> (ou a chave que ela definir)
+    <p>Ajude a gente a construir nosso lar com um PIX! 💛</p>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020101021126330014BR.GOV.BCB.PIX012246468189810520400005303986540607DURANTE5802BR6007JUNDIAI62070503***6304B5D2"
+           alt="PIX QR Code" style="border-radius:12px;background:#fff;padding:8px;max-width:180px;">
+      <div class="pix-key" onclick="copiarPix()">📋 Copiar código PIX</div>
+    </div>
+    <div style="font-size:0.75em;color:#8a7a9a;margin-top:10px;">
+      Durante • CPF: 464.681.898-10
     </div>
   </div>
 
@@ -420,7 +424,7 @@ function renderItem(item) {
 render();
 
 function copiarPix() {
-  const pix = document.getElementById('pix-email').textContent;
+  const pix = '46468189810';
   navigator.clipboard.writeText(pix).then(() => {
     const toast = document.getElementById('toast');
     toast.textContent = '✅ Chave PIX copiada!';
