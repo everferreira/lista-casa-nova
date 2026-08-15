@@ -158,8 +158,8 @@ body {
   position: relative;
 }
 .item-card:hover {
-  border-color: #d4b8a0;
-  box-shadow: 0 4px 20px rgba(139,94,60,0.1);
+  border-color: #e0b0c0;
+  box-shadow: 0 4px 20px rgba(212,138,168,0.15);
   transform: translateY(-2px);
 }
 .item-card .item-emoji {
@@ -225,66 +225,6 @@ body {
   color: #8b5e3c;
 }
 .store-link.outro:hover { background: #e0d0c0; }
-
-.item-card .bought-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #4caf50;
-  color: #fff;
-  font-size: 0.65em;
-  padding: 3px 10px;
-  border-radius: 8px;
-  font-weight: 700;
-  display: none;
-}
-.item-card.bought { opacity: 0.7; }
-.item-card.bought .item-name {
-  text-decoration: line-through;
-  color: #999;
-}
-.item-card.bought .bought-badge { display: block; }
-
-/* ─── STATS BAR ─── */
-.stats-bar {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  margin: 20px 0 30px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  border: 1px solid #f0e8e0;
-}
-.stats-bar .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  text-align: center;
-  margin-bottom: 16px;
-}
-.stats-bar .stat .num {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8em;
-  font-weight: 700;
-  color: #d48aa8;
-}
-.stats-bar .stat .label {
-  font-size: 0.78em;
-  color: #999;
-  margin-top: 2px;
-}
-.stats-bar .progress-track {
-  width: 100%;
-  height: 8px;
-  background: #f0e8f0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.stats-bar .progress-fill {
-  height: 100%;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #89CFF0, #ffffff, #ffb3c6);
-  transition: width 0.5s;
-}
 
 /* ─── PIX / CONTRIBUTION ─── */
 .pix-area {
@@ -374,18 +314,6 @@ footer .footer-heart { color: #e8b88a; }
   <!-- MESSAGE -->
   <div class="message-box">
     <p>💛 <span class="highlight">Estamos montando nosso primeiro lar!</span> Cada cantinho tá sendo pensado com muito amor. Se você quiser fazer parte dessa história, escolheu um item da lista e clica nos links pra comprar — a gente ama vocês! 🥰</p>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stats-grid">
-      <div class="stat"><div class="num" id="total-items">0</div><div class="label">Itens na lista</div></div>
-      <div class="stat"><div class="num" id="bought-items">0</div><div class="label">Itens adquiridos</div></div>
-      <div class="stat"><div class="num" id="pct-display">0%</div><div class="label">Concluído</div></div>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-    </div>
   </div>
 
   <!-- CATEGORIES -->
@@ -620,12 +548,9 @@ function render() {
   });
 
   container.innerHTML = html;
-  updateStats();
 }
 
 function renderItem(item) {
-  const key = item.nome;
-  const bought = localStorage.getItem('bought_' + key) === 'true';
   const linksHtml = item.links.map(l => {
     const icon = STORE_ICONS[l.loja] || '🔗';
     const cls = STORE_CLASS[l.loja] || 'outro';
@@ -634,8 +559,7 @@ function renderItem(item) {
   }).join('');
 
   return `
-    <div class="item-card ${bought ? 'bought' : ''}" onclick="toggleItem(this, '${key.replace(/'/g, "\\'")}')">
-      <div class="bought-badge">✅ Adquirido</div>
+    <div class="item-card">
       <div class="item-emoji">${item.emoji}</div>
       <div class="item-name">${item.nome}</div>
       <div class="item-desc">${item.desc}</div>
@@ -644,30 +568,7 @@ function renderItem(item) {
   `;
 }
 
-function toggleItem(el, nome) {
-  const key = 'bought_' + nome;
-  const isBought = localStorage.getItem(key) === 'true';
-  if (isBought) {
-    localStorage.removeItem(key);
-    el.classList.remove('bought');
-  } else {
-    localStorage.setItem(key, 'true');
-    el.classList.add('bought');
-  }
-  updateStats();
-}
-
-function updateStats() {
-  const cards = document.querySelectorAll('.item-card');
-  const total = cards.length;
-  const bought = document.querySelectorAll('.item-card.bought').length;
-  const pct = total > 0 ? Math.round((bought / total) * 100) : 0;
-
-  document.getElementById('total-items').textContent = total;
-  document.getElementById('bought-items').textContent = bought;
-  document.getElementById('pct-display').textContent = pct + '%';
-  document.getElementById('progress-fill').style.width = pct + '%';
-}
+render();
 
 function copiarPix() {
   const pix = document.getElementById('pix-email').textContent;
@@ -684,7 +585,6 @@ function copiarPix() {
   });
 }
 
-render();
 </script>
 </body>
 </html>
