@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Casa Nova — Ever & Kauan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #faf7f2;
+  color: #2d2d2d;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.hero {
+  background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+  padding: 60px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '🏠';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.08;
+  top: -20px;
+  right: -20px;
+  transform: rotate(15deg);
+}
+.hero::after {
+  content: '💛';
+  position: absolute;
+  font-size: 80px;
+  opacity: 0.08;
+  bottom: -10px;
+  left: -10px;
+  transform: rotate(-10deg);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8em;
+  color: #8b5e3c;
+  margin-bottom: 8px;
+  position: relative;
+}
+.hero .names {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  color: #a0714f;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.hero .subtitle {
+  color: #8b7a6a;
+  font-size: 1em;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.hero .heart {
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ─── CONTAINER ─── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ─── MESSAGE BOX ─── */
+.message-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  margin: 30px 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0e8e0;
+}
+.message-box p {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.message-box .highlight {
+  color: #8b5e3c;
+  font-weight: 600;
+}
+
+/* ─── CATEGORIES ─── */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6em;
+  color: #8b5e3c;
+  margin: 40px 0 4px;
+  text-align: center;
+}
+.section-subtitle {
+  text-align: center;
+  color: #999;
+  font-size: 0.85em;
+  margin-bottom: 24px;
+}
+
+.category {
+  margin-bottom: 40px;
+}
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0e8e0;
+}
+.category-header .icon {
+  font-size: 1.5em;
+}
+.category-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3em;
+  color: #8b5e3c;
+  font-weight: 600;
+}
+.category-header .count {
+  background: #f0e8e0;
+  color: #8b5e3c;
+  font-size: 0.75em;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* ─── ITEMS GRID ─── */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.item-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #f0e8e0;
+  transition: all 0.25s;
+  position: relative;
+}
+.item-card:hover {
+  border-color: #d4b8a0;
+  box-shadow: 0 4px 20px rgba(139,94,60,0.1);
+  transform: translateY(-2px);
+}
+.item-card .item-emoji {
+  font-size: 2em;
+  margin-bottom: 8px;
+}
+.item-card .item-name {
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #2d2d2d;
+  margin-bottom: 4px;
+}
+.item-card .item-desc {
+  font-size: 0.8em;
+  color: #999;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.item-card .store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.item-card .store-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.72em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.store-link.amazon {
+  background: #ffd814;
+  color: #111;
+}
+.store-link.amazon:hover { background: #f7ca00; }
+.store-link.shopee {
+  background: #ee4d2d;
+  color: #fff;
+}
+.store-link.shopee:hover { background: #d63d1d; }
+.store-link.shein {
+  background: #000;
+  color: #fff;
+}
+.store-link.shein:hover { background: #333; }
+.store-link.mercadolivre {
+  background: #ffe600;
+  color: #333;
+}
+.store-link.mercadolivre:hover { background: #f0d800; }
+.store-link.magalu {
+  background: #005ca9;
+  color: #fff;
+}
+.store-link.magalu:hover { background: #004a8a; }
+.store-link.outro {
+  background: #f0e8e0;
+  color: #8b5e3c;
+}
+.store-link.outro:hover { background: #e0d0c0; }
+
+.item-card .bought-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #4caf50;
+  color: #fff;
+  font-size: 0.65em;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  display: none;
+}
+.item-card.bought { opacity: 0.7; }
+.item-card.bought .item-name {
+  text-decoration: line-through;
+  color: #999;
+}
+.item-card.bought .bought-badge { display: block; }
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0 30px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0e8e0;
+}
+.stats-bar .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.stats-bar .stat .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #8b5e3c;
+}
+.stats-bar .stat .label {
+  font-size: 0.78em;
+  color: #999;
+  margin-top: 2px;
+}
+.stats-bar .progress-track {
+  width: 100%;
+  height: 8px;
+  background: #f0e8e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.stats-bar .progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e8b88a, #d4a070);
+  transition: width 0.5s;
+}
+
+/* ─── PIX / CONTRIBUTION ─── */
+.pix-area {
+  background: linear-gradient(135deg, #f5e6d3, #e8d5c4);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 30px 0;
+  text-align: center;
+}
+.pix-area h3 {
+  font-family: 'Playfair Display', serif;
+  color: #8b5e3c;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+.pix-area p {
+  color: #8b7a6a;
+  font-size: 0.85em;
+  margin-bottom: 12px;
+}
+.pix-area .pix-key {
+  background: #fff;
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #8b5e3c;
+  cursor: pointer;
+  border: 1px dashed #d4b8a0;
+  transition: 0.2s;
+}
+.pix-area .pix-key:hover {
+  background: #8b5e3c;
+  color: #fff;
+  border-color: #8b5e3c;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #bbb;
+  font-size: 0.8em;
+}
+footer .footer-heart { color: #e8b88a; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2em; }
+  .hero .names { font-size: 1.1em; }
+  .items-grid { grid-template-columns: 1fr; }
+  .stats-bar .stats-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .stats-bar .stat .num { font-size: 1.4em; }
+}
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d2d2d;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.85em;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 999;
+}
+.toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🏠 Nossa Casa Nova</h1>
+  <div class="names">Ever <span class="heart">💛</span> Kauan</div>
+  <p class="subtitle">Escolhemos cada item com carinho pra começar essa nova fase. Se quiser nos ajudar, clique nos links e seja bem-vindo ao nosso lar!</p>
+</div>
+
+<div class="container">
+
+  <!-- MESSAGE -->
+  <div class="message-box">
+    <p>💛 <span class="highlight">Estamos montando nosso primeiro lar!</span> Cada cantinho tá sendo pensado com muito amor. Se você quiser fazer parte dessa história, escolheu um item da lista e clica nos links pra comprar — a gente ama vocês! 🥰</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat"><div class="num" id="total-items">0</div><div class="label">Itens na lista</div></div>
+      <div class="stat"><div class="num" id="bought-items">0</div><div class="label">Itens adquiridos</div></div>
+      <div class="stat"><div class="num" id="pct-display">0%</div><div class="label">Concluído</div></div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div id="items-container"></div>
+
+  <!-- PIX -->
+  <div class="pix-area">
+    <h3>💵 Contribuição em dinheiro</h3>
+    <p>Se preferir, pode contribuir via PIX — cada real ajuda a construir nosso lar! 🏠</p>
+    <div class="pix-key" onclick="copiarPix()">📋 Copiar chave PIX</div>
+    <div style="font-size:0.75em;color:#8b7a6a;margin-top:8px;">
+      <span id="pix-email">everferreira@email.com</span> (ou a chave que ela definir)
+    </div>
+  </div>
+
+  <footer>
+    Feito com <span class="footer-heart">💛</span> pra nossa casa nova<br>
+    <span style="font-size:0.85em;">Ever & Kauan • 2026</span>
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// DADOS DA LISTA — Edite aqui!
+// ═══════════════════════════════════════════════════════════
+
+const ITENS = [
+  // ─── SALA ───
+  { categoria: '🛋️ Sala de Estar', itens: [
+    { nome: 'Sofá 3 lugares', desc: 'Confortável pra receber as visitas', emoji: '🛋️', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Tapete decorativo', desc: 'Pra dar aquele aconchego', emoji: '🟤', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+    { nome: 'Luminária de chão', desc: 'Iluminação suave pra noite', emoji: '💡', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Magalu', url: '#' }
+    ]},
+    { nome: 'Quadro decorativo', desc: 'Um quadro bonito pra parede', emoji: '🖼️', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+    { nome: 'Mesa de centro', desc: 'Pra apoiar o café e a revista', emoji: '🧊', links: [
+      { loja: 'Mercado Livre', url: '#' },
+      { loja: 'Amazon', url: '#' }
+    ]},
+  ]},
+
+  // ─── COZINHA ───
+  { categoria: '🍳 Cozinha', itens: [
+    { nome: 'Jogo de panelas', desc: 'Antiaderente, 5 peças', emoji: '🍲', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Magalu', url: '#' }
+    ]},
+    { nome: 'Liquidificador', desc: 'Potente pra sucos e vitaminas', emoji: '🥤', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Jogo de pratos', desc: '6 pratos lisos + 6 fundos', emoji: '🍽️', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+    { nome: 'Jogo de talheres', desc: '20 peças em aço inox', emoji: '🔪', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Conjunto de copos', desc: '6 copos americanos', emoji: '🥛', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Air fryer', desc: 'Pra fazer frituras saudáveis', emoji: '🍟', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Magalu', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Garrafa térmica', desc: 'Manter o café quentinho', emoji: '☕', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+  ]},
+
+  // ─── QUARTO ───
+  { categoria: '🛏️ Quarto', itens: [
+    { nome: 'Jogo de cama king', desc: 'Lençol + fronhas + edredom', emoji: '🛏️', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+    { nome: 'Travesseiros', desc: '2 travesseiros macios', emoji: '🟤', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Guarda-roupa', desc: '6 portas com gavetas', emoji: '🗄️', links: [
+      { loja: 'Mercado Livre', url: '#' },
+      { loja: 'Magalu', url: '#' }
+    ]},
+    { nome: 'Criado-mudo', desc: '2 unidades', emoji: '🪑', links: [
+      { loja: 'Mercado Livre', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Abajur de mesa', desc: 'Luz suave pra leitura', emoji: '🪔', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+  ]},
+
+  // ─── BANHEIRO ───
+  { categoria: '🚿 Banheiro', itens: [
+    { nome: 'Toalhas de banho', desc: 'Kit 4 toalhas macias', emoji: '🧴', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+    { nome: 'Tapete de banheiro', desc: 'Antiderrapante', emoji: '🟫', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Porta-toalhas', desc: 'Cromado, 2 barras', emoji: '🚿', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Magalu', url: '#' }
+    ]},
+    { nome: 'Cesto de roupa', desc: '50 litros, com tampa', emoji: '🧺', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+  ]},
+
+  // ─── ESCRITÓRIO ───
+  { categoria: '📚 Escritório / Estudo', itens: [
+    { nome: 'Escrivaninha', desc: 'Mesa compacta com gaveta', emoji: '🪑', links: [
+      { loja: 'Mercado Livre', url: '#' },
+      { loja: 'Magalu', url: '#' }
+    ]},
+    { nome: 'Cadeira de escritório', desc: 'Ergonômica, com apoio lombar', emoji: '💺', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Estante de livros', desc: '5 prateleiras', emoji: '📚', links: [
+      { loja: 'Mercado Livre', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Luminária de mesa', desc: 'LED, braço articulado', emoji: '💡', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+  ]},
+
+  // ─── ELETRÔNICOS ───
+  { categoria: '📺 Eletrônicos', itens: [
+    { nome: 'TV 50" 4K', desc: 'Smart TV pra sala', emoji: '📺', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Magalu', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Caixa de som bluetooth', desc: 'Pra ouvir música na sala', emoji: '🔊', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Ventilador de teto', desc: 'Com controle remoto', emoji: '🌀', links: [
+      { loja: 'Magalu', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Ferro de passar', desc: 'A vapor, sem fio', emoji: '👕', links: [
+      { loja: 'Amazon', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+  ]},
+
+  // ─── DECORAÇÃO ───
+  { categoria: '🌿 Decoração & Plantas', itens: [
+    { nome: 'Vaso de planta grande', desc: 'Pra dar vida ao ambiente', emoji: '🌵', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Mercado Livre', url: '#' }
+    ]},
+    { nome: 'Garrafa de água', desc: 'Garrafa decorativa', emoji: '🧊', links: [
+      { loja: 'Shein', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Velas aromáticas', desc: 'Kit 3 velas', emoji: '🕯️', links: [
+      { loja: 'Shein', url: '#' },
+      { loja: 'Shopee', url: '#' }
+    ]},
+    { nome: 'Porta-retratos', desc: 'Kit 4 molduras', emoji: '🖼️', links: [
+      { loja: 'Shopee', url: '#' },
+      { loja: 'Shein', url: '#' }
+    ]},
+  ]},
+];
+
+// ═══════════════════════════════════════════════════════════
+// LÓGICA
+// ═══════════════════════════════════════════════════════════
+
+const STORE_ICONS = {
+  'Amazon': '📦',
+  'Shopee': '🛵',
+  'Shein': '👗',
+  'Mercado Livre': '🟡',
+  'Magalu': '🔵',
+};
+
+const STORE_CLASS = {
+  'Amazon': 'amazon',
+  'Shopee': 'shopee',
+  'Shein': 'shein',
+  'Mercado Livre': 'mercadolivre',
+  'Magalu': 'magalu',
+};
+
+function render() {
+  const container = document.getElementById('items-container');
+  let html = '';
+
+  ITENS.forEach(cat => {
+    const items = cat.itens;
+    html += `<div class="category">
+      <div class="category-header">
+        <span class="icon">${cat.categoria.split(' ')[0]}</span>
+        <h2>${cat.categoria}</h2>
+        <span class="count">${items.length} itens</span>
+      </div>
+      <div class="items-grid">
+        ${items.map(item => renderItem(item)).join('')}
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML = html;
+  updateStats();
+}
+
+function renderItem(item) {
+  const key = item.nome;
+  const bought = localStorage.getItem('bought_' + key) === 'true';
+  const linksHtml = item.links.map(l => {
+    const icon = STORE_ICONS[l.loja] || '🔗';
+    const cls = STORE_CLASS[l.loja] || 'outro';
+    const linkUrl = l.url && l.url !== '#' ? l.url : 'javascript:void(0)';
+    return `<a href="${linkUrl}" target="_blank" class="store-link ${cls}">${icon} ${l.loja}</a>`;
+  }).join('');
+
+  return `
+    <div class="item-card ${bought ? 'bought' : ''}" onclick="toggleItem(this, '${key.replace(/'/g, "\\'")}')">
+      <div class="bought-badge">✅ Adquirido</div>
+      <div class="item-emoji">${item.emoji}</div>
+      <div class="item-name">${item.nome}</div>
+      <div class="item-desc">${item.desc}</div>
+      <div class="store-links">${linksHtml}</div>
+    </div>
+  `;
+}
+
+function toggleItem(el, nome) {
+  const key = 'bought_' + nome;
+  const isBought = localStorage.getItem(key) === 'true';
+  if (isBought) {
+    localStorage.removeItem(key);
+    el.classList.remove('bought');
+  } else {
+    localStorage.setItem(key, 'true');
+    el.classList.add('bought');
+  }
+  updateStats();
+}
+
+function updateStats() {
+  const cards = document.querySelectorAll('.item-card');
+  const total = cards.length;
+  const bought = document.querySelectorAll('.item-card.bought').length;
+  const pct = total > 0 ? Math.round((bought / total) * 100) : 0;
+
+  document.getElementById('total-items').textContent = total;
+  document.getElementById('bought-items').textContent = bought;
+  document.getElementById('pct-display').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function copiarPix() {
+  const pix = document.getElementById('pix-email').textContent;
+  navigator.clipboard.writeText(pix).then(() => {
+    const toast = document.getElementById('toast');
+    toast.textContent = '✅ Chave PIX copiada!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }).catch(() => {
+    const toast = document.getElementById('toast');
+    toast.textContent = '📋 Chave: ' + pix;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
